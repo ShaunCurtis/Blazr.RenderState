@@ -6,7 +6,7 @@ Net8 introduced the Rendermode, and with it the ability to create all sorts of v
 
 The problem with this choice is it's very easy to get things wrong.
 
-The Demo project provides an illustration of one common problem and how *Blazor.RenderState* helps you overcome it.
+The Demo project provides an illustration of one common problem and how *Blazr.RenderState* helps you overcome it.
 
 It's a *Blazor Web Project* template with *InteractiveServer* and *Per page/component* options selected.
 
