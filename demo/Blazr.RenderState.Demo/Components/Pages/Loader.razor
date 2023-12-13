@@ -1,0 +1,32 @@
+﻿@page "/Loader"
+@rendermode InteractiveServer
+@using Blazr.RenderState
+@inject IBlazrRenderStateService RenderState
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+@if (RenderState.IsPreRender || _loading)
+{
+    <div class="alert alert-warning">Loading</div>
+    return;
+}
+
+
+<div class="alert alert-success">Loaded</div>
+
+@code {
+    private bool _loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // exist early
+        if (this.RenderState.IsPreRender)
+            return;
+
+        await Task.Delay(2000);
+        _loading = false;
+    }
+}

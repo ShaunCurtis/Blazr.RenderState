@@ -1,25 +1,15 @@
-# Blazor.RenderState
-
-*RenderState* is a Nuget package that provides state information on the render mode of components.
-
 Net8 introduced the Rendermode, and with it the ability to create all sorts of variations of static. active and client side rendered pages.
 
 The problem with this choice is it's very easy to get things wrong.
 
-The Demo project provides an illustration of one common problem and how *Blazor.RenderState* helps you overcome it.
+For this answer I've:
 
-It's a *Blazor Web Project* template with *InteractiveServer* and *Per page/component* options selected.
-
-The Demo installs the *Blazor.RenderState.Server* package and adds the necessary services in `Program`.
+1. Deployed a *Blazor Web Project* template with *InteractiveServer* and *Per page/component* options selected.
+2. Added the *Blazr.RenderState* Nuget package.
+3. Added the *Blazr.RenderState* services to the server.
 
 ```csharp
-// Add services to the container.
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
-
 builder.AddBlazrRenderStateServerServices();
-
-var app = builder.Build();
 ```
 
 A normal async load page looks like this.  I've used an `await Task.Delay(2000);` to fake a slow async database data get.
@@ -72,11 +62,13 @@ The reason for this is that the application is set to *Per page/component* and t
 
 It's an SSSR component.
 
-That means that all the pages are initially statically rendered too.  `App`, `Router`, `MainLayout`, `NavMenu` are all SSSR.  It's only `Home` and it's sub-components that are ASSR.
+That means that `App`, `Router`, `MainLayout`, `NavMenu` are all SSSR.  It's only `Home` and it's sub-components that are ASSR.
 
-Using the `IBlazrRenderStateService` we can detect a pre-render, not do any long running async tasks and display the same loading page.
+### `IBlazrRenderStateService`
 
-The page loads immediately and the SSSR to ASSR context switch is much more seamless.
+`IBlazrRenderStateService` detects a pre-render, so we can avoid doing any long running async tasks and display the same loading page.
+
+This version of the page loads immediately and the SSSR to ASSR context switch is much more seamless.
 
 ```caharp
 @page "/Loader"
@@ -113,3 +105,10 @@ Welcome to your new app.
 }
 ```
 
+### OnAfterRender{Async}
+
+`OnAfterRender{Async}` works in this instance because it isn't called when pre-rendering (there's no js context).  However I don't believe it's good practice to use it in this context for the same reasons given in these two questions and answers.
+
+ - https://stackoverflow.com/questions/69374767/should-i-use-onafterrenderasync-instead-of-oninitializedasync
+
+ - https://stackoverflow.com/questions/76442472/blazor-should-i-read-in-my-data-in-oninitializedasync-or-onafterrenderasync

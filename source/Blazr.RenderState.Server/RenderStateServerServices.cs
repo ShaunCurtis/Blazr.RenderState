@@ -4,9 +4,7 @@
 /// If you use it, donate something to a charity somewhere
 /// ============================================================
 
-using Blazr.RenderState;
-
-namespace Blazr.RenderLogger.Server;
+namespace Blazr.RenderState.Server;
 
 public static class RenderStateServerServices
 {

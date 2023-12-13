@@ -3,9 +3,7 @@
 /// License: Use And Donate
 /// If you use it, donate something to a charity somewhere
 /// ============================================================
-using Blazr.RenderState;
-
-namespace Blazr.RenderLogger.WASM;
+namespace Blazr.RenderState.WASM;
 
 public class WASMRenderStateService : IBlazrRenderStateService
 {

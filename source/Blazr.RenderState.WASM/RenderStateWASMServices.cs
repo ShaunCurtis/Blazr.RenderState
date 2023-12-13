@@ -3,11 +3,10 @@
 /// License: Use And Donate
 /// If you use it, donate something to a charity somewhere
 /// ============================================================
-using Blazr.RenderState;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Blazr.RenderLogger.WASM;
+namespace Blazr.RenderState.WASM;
 
 public static class RenderStateWASMServices
 {
