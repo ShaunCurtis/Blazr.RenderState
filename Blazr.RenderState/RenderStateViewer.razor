@@ -1,0 +1,21 @@
+@using Microsoft.Extensions.DependencyInjection
+@inject IBlazrRenderStateService RenderService
+
+<div class="@_alertCss @this.Class">
+    @_parentName => ID: @RenderService.ServiceUid.ToString().Substring(0,4) => Mode: @_alertText
+</div>
+
+@code {
+    [Parameter] public IComponent? Parent { get; set; }
+    [Parameter] public string? Class { get; set; }
+
+    private bool _preRender => this.RenderService?.IsPreRender ?? false;
+    private bool _hasService => this.RenderService is not null;
+    private string _alertCss => _preRender ? "alert alert-warning" : this.RenderService.RenderState == BlazrRenderState.SSR ? "alert alert-secondary" : "alert alert-primary";
+    private string _alertText => !_preRender ? $"{this.RenderService.RenderState} Rendered" : "Pre Rendered";
+    private string _parentName => Parent?.GetType().Name ?? "No Name";
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+}
