@@ -9,6 +9,7 @@ namespace Blazr.RenderState;
 public interface IBlazrRenderStateService
 {
     public Guid ServiceUid { get; }
+    public string Id { get; }
     public BlazrRenderState RenderState { get; }
     public bool IsPreRender => this.RenderState == BlazrRenderState.PreRender;
 }

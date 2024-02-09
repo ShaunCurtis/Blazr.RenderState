@@ -113,3 +113,27 @@ Welcome to your new app.
 }
 ```
 
+## Logging
+
+The library has two components you can use to log the render mode.
+
+Add `@inherits LoggingComponentBase` to `App`, `Routes`, `Home`, etc.  Add `@inherits LoggingLayoutComponentBase` to `MainLayout`.
+
+You will then see console logging [either in the Server console or the Browser console].  Here's an example:
+
+```text
+App - PreRender - ServiceId: 29dc
+Routes - PreRender - ServiceId: 29dc
+MainLayout - PreRender - ServiceId: 29dc
+Home - PreRender - ServiceId: 29dc
+Home - SSR - ServiceId: af2e
+App - PreRender - ServiceId: 7725
+Routes - PreRender - ServiceId: 7725
+MainLayout - PreRender - ServiceId: 7725
+Counter - PreRender - ServiceId: 7725
+Counter - SSR - ServiceId: af2e
+App - PreRender - ServiceId: f4e4
+Routes - PreRender - ServiceId: f4e4
+MainLayout - PreRender - ServiceId: f4e4
+Weather - PreRender - ServiceId: f4e4
+```
