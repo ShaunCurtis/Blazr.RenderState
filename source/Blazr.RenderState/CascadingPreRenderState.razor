@@ -1,0 +1,16 @@
+
+<CascadingValue Value="_preRenderState" IsFixed>
+    @this.ChildContent
+</CascadingValue>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [CascadingParameter] HttpContext? HttpContext { get; set; }
+
+    private PreRenderState _preRenderState = new(false);
+
+    protected override void OnInitialized()
+    {
+        _preRenderState = new(this.HttpContext is not null);
+    }
+}

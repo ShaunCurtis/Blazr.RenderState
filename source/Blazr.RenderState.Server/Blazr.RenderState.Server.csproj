@@ -17,14 +17,13 @@
 		<PackageReadmeFile>Package.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/ShaunCurtis/Blazr.RenderState</RepositoryUrl>
 		<PackageReleaseNotes>Release Version</PackageReleaseNotes>
-		<AssemblyVersion>1.0.0</AssemblyVersion>
-		<FileVersion>1.0.0</FileVersion>
-		<Version>1.0.0</Version>
+		<AssemblyVersion>1.0.1</AssemblyVersion>
+		<FileVersion>1.0.1</FileVersion>
+		<Version>1.0.1</Version>
 		<PackageLicenseFile>license.txt</PackageLicenseFile>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
