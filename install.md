@@ -35,7 +35,7 @@ builder.AddBlazrRenderStateWASMServices();
 And add the following `using` to both project's `_Imports.razor`.
 
 ```csharp
-@using Blazr.RenderLogger
+@using Blazr.RenderState
 ```
 
 ## Using the State
